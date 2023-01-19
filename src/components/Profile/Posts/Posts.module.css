@@ -1,0 +1,19 @@
+.posts {
+  text-align: center;
+  margin: 50px 0px;
+  color: #003b46;
+}
+
+.add_post {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.add_post button {
+  width: 130px;
+  margin-top: 5px;
+}
+
+.add_post textarea {
+  width: 100%;
+}

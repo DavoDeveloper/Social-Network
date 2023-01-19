@@ -1,0 +1,11 @@
+.post {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  color: #003b46;
+}
+.post img {
+  height: 50px;
+  width: 50px;
+  margin-right: 20px;
+}

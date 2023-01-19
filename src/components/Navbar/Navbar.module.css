@@ -1,0 +1,13 @@
+.bar {
+  background-color: #66a5ad;
+  padding: 10px 10px;
+
+  height: 100%;
+}
+.bar div {
+  margin-bottom: 12px;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+  font-weight: 400;
+}
