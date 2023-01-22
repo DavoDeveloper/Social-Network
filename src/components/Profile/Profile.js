@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Profile.module.css";
 import Posts from "./Posts/Posts";
 
-const Profile = () => {
+const Profile = (props) => {
   return (
     <div className={s.profile}>
       <img src="https://i.pinimg.com/originals/bd/27/a6/bd27a624efead1f76cf41c0256572c55.jpg" alt="" />
@@ -16,7 +16,7 @@ const Profile = () => {
           <div>Web Site:https//:example.com</div>
         </div>
       </div>
-      <Posts />
+      <Posts posts={props.posts} />
     </div>
   );
 };
