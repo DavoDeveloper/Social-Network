@@ -1,0 +1,9 @@
+.dialog {
+  color: black;
+  display: block;
+  text-decoration: none;
+}
+
+.dialog:hover {
+  color: inherit;
+}
