@@ -1,0 +1,33 @@
+.title {
+  color: white;
+  margin-top: 100px;
+}
+.friendBlock {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.friendItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.friendItem img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+.friendItem span {
+  color: white;
+  font-size: 18px;
+}
+.friendImg {
+  height: 70px;
+  width: 70px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+}
