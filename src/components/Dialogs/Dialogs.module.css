@@ -7,3 +7,10 @@
 .dialog:hover {
   color: inherit;
 }
+.send {
+  display: flex;
+  margin-top: 60px;
+}
+.send textarea {
+  height: 20px;
+}

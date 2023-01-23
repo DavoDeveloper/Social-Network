@@ -1,8 +1,10 @@
+import { rerenderEnireTree } from "./render";
+
 let state = {
   profilePage: {
     posts: [
-      { message: "Hi!,how are you", like: 50 },
-      { message: "Its my first post", like: 35 },
+      { id: 1, message: "Hi!,how are you", like: 50 },
+      { id: 2, message: "Its my first post", like: 35 },
     ],
   },
   dialogsPage: {
@@ -30,6 +32,16 @@ let state = {
       { name: "Smith", imgUrl: "https://st2.depositphotos.com/3143277/8644/i/600/depositphotos_86446164-stock-photo-business-man-in-office.jpg" },
     ],
   },
+};
+
+export let newPost = (postContent) => {
+  let newPost = {
+    id: 3,
+    message: postContent,
+    like: 0,
+  };
+  state.profilePage.posts.push(newPost);
+  rerenderEnireTree(state);
 };
 
 export default state;
