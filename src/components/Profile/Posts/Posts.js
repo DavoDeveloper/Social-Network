@@ -13,6 +13,11 @@ const Posts = (props) => {
     newPost.current.value = "";
   };
 
+  let newPostValue = () => {
+    let text = newPost.current.value;
+    props.updatePostText(text);
+  };
+
   return (
     <div>
       <div>
@@ -20,7 +25,7 @@ const Posts = (props) => {
       </div>
       <h3>New Post</h3>
       <div className={s.add_post}>
-        <textarea ref={newPost} class="form-control" id="exampleFormControlTextarea1"></textarea>
+        <textarea ref={newPost} class="form-control" id="exampleFormControlTextarea1" onChange={newPostValue}></textarea>
         <button onClick={AddPost} className="btn btn-outline-dark">
           Add new Post
         </button>

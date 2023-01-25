@@ -1,7 +1,6 @@
 import React from "react";
 import s from "./Profile.module.css";
 import Posts from "./Posts/Posts";
-// import { newPost } from "../../state";
 
 const Profile = (props) => {
   return (
@@ -17,7 +16,7 @@ const Profile = (props) => {
           <div>Web Site:https//:example.com</div>
         </div>
       </div>
-      <Posts posts={props.posts} newPost={props.newPost} />
+      <Posts posts={props.posts} newPost={props.newPost} newPostText={props.newPostText} updatePostText={props.updatePostText} />
     </div>
   );
 };
