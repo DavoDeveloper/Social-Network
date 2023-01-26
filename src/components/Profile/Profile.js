@@ -16,7 +16,7 @@ const Profile = (props) => {
           <div>Web Site:https//:example.com</div>
         </div>
       </div>
-      <Posts posts={props.posts} newPost={props.newPost} newPostText={props.newPostText} updatePostText={props.updatePostText} />
+      <Posts posts={props.posts} dispatch={props.dispatch} />
     </div>
   );
 };
