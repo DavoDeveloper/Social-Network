@@ -4,20 +4,17 @@ import s from "./Posts.module.css";
 
 const Posts = (props) => {
   let newPosts = props.posts.map((p) => <Post message={p.message} like={p.like} />);
-
   let newPost = React.createRef();
 
   let AddPost = () => {
-    let text = newPost.current.value;
-    props.newPost(text);
-    newPost.current.value = "";
+    props.dispatch({ type: "NEW-POST" });
   };
 
   let newPostValue = () => {
     let text = newPost.current.value;
-    props.updatePostText(text);
+    props.dispatch({ type: "NEW-POST-TEXT", newText: text });
+    console.log(text);
   };
-
   return (
     <div>
       <div>

@@ -21,7 +21,7 @@ function App(props) {
             </div>
             <div className="col-9">
               <Routes>
-                <Route path="/profile" element={<Profile posts={props.state.profilePage.posts} newPost={props.newPost} newPostText={props.state.profilePage.newPostText} updatePostText={props.updatePostText} />} />
+                <Route path="/profile" element={<Profile profilePage={props.state.profilePage} dispatch={props.dispatch} />} />
                 <Route path="/dialogs/*" element={<Dialogs messages={props.state.dialogsPage.messages} dialogs={props.state.dialogsPage.dialogs} />} />
                 <Route path="/news" element={<News />} />
                 <Route path="/music" element={<Music />} />
