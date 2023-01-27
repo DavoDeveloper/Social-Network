@@ -39,22 +39,24 @@ let store = {
   rerenderEntireTree() {
     console.log("State changed");
   },
-  newPost() {
-    let newPost = {
-      id: 3,
-      message: this._state.profilePage.newPostText,
-      like: 0,
-    };
-    this._state.profilePage.posts.push(newPost);
-    this._state.profilePage.newPostText = "";
-    this.rerenderEntireTree(this._state);
-  },
-  updatePostText(newText) {
-    this._state.profilePage.newPostText = newText;
-    this.rerenderEntireTree(this._state);
-  },
   subscribe(observer) {
     this.rerenderEntireTree = observer;
+  },
+
+  dispatch(action) {
+    if (action.type === "NEW-POST") {
+      let newPost = {
+        id: 3,
+        message: this._state.profilePage.newPostText,
+        like: 0,
+      };
+      this._state.profilePage.posts.push(newPost);
+      this._state.profilePage.newPostText = "";
+      this.rerenderEntireTree(this._state);
+    } else if (action.type === "UPDATE-POST-TEXT") {
+      this._state.profilePage.newPostText = action.newText;
+      this.rerenderEntireTree(this._state);
+    }
   },
 };
 
