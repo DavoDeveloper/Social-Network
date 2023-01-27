@@ -1,3 +1,6 @@
+import messageReducer from "./message-reducer";
+import postReducer from "./post-reducer";
+
 let store = {
   _state: {
     profilePage: {
@@ -45,36 +48,10 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type === "NEW-POST") {
-      let newPost = {
-        id: 3,
-        message: this._state.profilePage.newPostText,
-        like: 0,
-      };
-      this._state.profilePage.newPostText = "";
-      this._state.profilePage.posts.push(newPost);
-      this.rerenderEntireTree(this._state);
-    } else if (action.type === "UPDATE-POST-TEXT") {
-      this._state.profilePage.newPostText = action.newText;
-      this.rerenderEntireTree(this._state);
-    } else if (action.type === "NEW-MESSAGE") {
-      let newMessage = {
-        message: this._state.dialogsPage.newMessageText,
-        id: 4,
-      };
-      this._state.dialogsPage.newMessageText = "";
-      this._state.dialogsPage.messages.push(newMessage);
-      this.rerenderEntireTree(this._state);
-    } else if (action.type === "UPDATE-MESSAGE-VALUE") {
-      this._state.dialogsPage.newMessageText = action.body;
-      this.rerenderEntireTree(this._state);
-    }
+    this._state.profilePage = postReducer(this._state.profilePage, action);
+    this._state.dialogsPage = messageReducer(this._state.dialogsPage, action);
+    this.rerenderEntireTree(this._state);
   },
 };
-
-export const AddPostActionCreater = () => ({ type: "NEW-POST" });
-export const NewPostValueActionCreator = (text) => ({ type: "UPDATE-POST-TEXT", newText: text });
-export const NewMessageCreator = () => ({ type: "NEW-MESSAGE" });
-export const UpdateNewMessageCreator = (body) => ({ type: "UPDATE-MESSAGE-VALUE", body: body });
 
 export default store;
