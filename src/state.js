@@ -5,7 +5,7 @@ let store = {
         { id: 1, message: "Hi!,how are you", like: 50 },
         { id: 2, message: "Its my first post", like: 35 },
       ],
-      newPostText: "hi",
+      newPostText: "",
     },
     dialogsPage: {
       dialogs: [
@@ -21,6 +21,7 @@ let store = {
         { message: "How are you", id: 2 },
         { message: "Yo", id: 3 },
       ],
+      newMessageText: "",
     },
     sidebar: {
       friends: [
@@ -50,14 +51,30 @@ let store = {
         message: this._state.profilePage.newPostText,
         like: 0,
       };
-      this._state.profilePage.posts.push(newPost);
       this._state.profilePage.newPostText = "";
+      this._state.profilePage.posts.push(newPost);
       this.rerenderEntireTree(this._state);
     } else if (action.type === "UPDATE-POST-TEXT") {
       this._state.profilePage.newPostText = action.newText;
       this.rerenderEntireTree(this._state);
+    } else if (action.type === "NEW-MESSAGE") {
+      let newMessage = {
+        message: this._state.dialogsPage.newMessageText,
+        id: 4,
+      };
+      this._state.dialogsPage.newMessageText = "";
+      this._state.dialogsPage.messages.push(newMessage);
+      this.rerenderEntireTree(this._state);
+    } else if (action.type === "UPDATE-MESSAGE-VALUE") {
+      this._state.dialogsPage.newMessageText = action.body;
+      this.rerenderEntireTree(this._state);
     }
   },
 };
+
+export const AddPostActionCreater = () => ({ type: "NEW-POST" });
+export const NewPostValueActionCreator = (text) => ({ type: "UPDATE-POST-TEXT", newText: text });
+export const NewMessageCreator = () => ({ type: "NEW-MESSAGE" });
+export const UpdateNewMessageCreator = (body) => ({ type: "UPDATE-MESSAGE-VALUE", body: body });
 
 export default store;

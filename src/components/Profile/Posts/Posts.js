@@ -1,4 +1,5 @@
 import React from "react";
+import { AddPostActionCreater, NewPostValueActionCreator } from "../../../state";
 import Post from "./Post";
 import s from "./Posts.module.css";
 
@@ -8,12 +9,13 @@ const Posts = (props) => {
   let newPost = React.createRef();
 
   let AddPost = () => {
-    props.dispatch({ type: "NEW-POST" });
+    props.dispatch(AddPostActionCreater());
+    newPost.current.value = "";
   };
 
   let newPostValue = () => {
     let text = newPost.current.value;
-    props.dispatch({ type: "UPDATE-POST-TEXT", newText: text });
+    props.dispatch(NewPostValueActionCreator(text));
   };
 
   return (
