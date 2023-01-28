@@ -1,16 +1,30 @@
-const postReducer = (state, action) => {
-  if (action.type === "NEW-POST") {
-    let newPost = {
-      id: 3,
-      message: state.newPostText,
-      like: 0,
-    };
-    state.newPostText = "";
-    state.posts.push(newPost);
-  } else if (action.type === "UPDATE-POST-TEXT") {
-    state.newPostText = action.newText;
+let initialState = {
+  profilePage: {
+    posts: [
+      { id: 1, message: "Hi!,how are you", like: 50 },
+      { id: 2, message: "Its my first post", like: 35 },
+    ],
+    newPostText: "",
+  },
+};
+
+const postReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "NEW-POST":
+      let newPost = {
+        id: 3,
+        message: state.newPostText,
+        like: 0,
+      };
+      state.profilePage.newPostText = "";
+      state.profilePage.posts.push(newPost);
+      return state;
+    case "UPDATE-POST-TEXT":
+      state.profilePage.newPostText = action.newText;
+      return state;
+    default:
+      return state;
   }
-  return state;
 };
 
 export const AddPostActionCreater = () => ({ type: "NEW-POST" });

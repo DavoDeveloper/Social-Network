@@ -10,6 +10,7 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settinngs/Settings";
 
 function App(props) {
+  console.log(props);
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -17,12 +18,13 @@ function App(props) {
         <div className="container">
           <div className="row">
             <div className="col-3">
-              <Navbar friends={props.state.sidebar.friends} />
+              {/* <Navbar friends={props.state.sidebar.friends} /> */}
+              <Navbar />
             </div>
             <div className="col-9">
               <Routes>
-                <Route path="/profile" element={<Profile posts={props.state.profilePage.posts} dispatch={props.dispatch} />} />
-                <Route path="/dialogs/*" element={<Dialogs messages={props.state.dialogsPage.messages} dialogs={props.state.dialogsPage.dialogs} dialogsPage={props.state.dialogsPage} dispatch={props.dispatch} />} />
+                <Route path="/profile" element={<Profile posts={props.state.posts.profilePage.posts} dispatch={props.dispatch} />} />
+                <Route path="/dialogs/*" element={<Dialogs messages={props.state.messages.dialogsPage.messages} dialogs={props.state.messages.dialogsPage.dialogs} dialogsPage={props.state.messages.dialogsPage} dispatch={props.dispatch} />} />
                 <Route path="/news" element={<News />} />
                 <Route path="/music" element={<Music />} />
                 <Route path="/settings" element={<Settings />} />
