@@ -18,9 +18,12 @@ const postReducer = (state = initialState, action) => {
       };
       state.profilePage.newPostText = "";
       state.profilePage.posts.push(newPost);
+      console.log(state.profilePage.posts);
+
       return state;
     case "UPDATE-POST-TEXT":
       state.profilePage.newPostText = action.newText;
+
       return state;
     default:
       return state;

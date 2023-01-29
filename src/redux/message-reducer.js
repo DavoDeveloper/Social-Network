@@ -21,14 +21,14 @@ const messageReducer = (state = initialState, action) => {
   switch (action.type) {
     case "NEW-MESSAGE":
       let newMessage = {
-        message: state.newMessageText,
+        message: state.dialogsPage.newMessageText,
         id: 4,
       };
-      state.profilePage.newMessageText = "";
-      state.profilePage.messages.push(newMessage);
+      state.dialogsPage.newMessageText = "";
+      state.dialogsPage.messages.push(newMessage);
       return state;
     case "UPDATE-MESSAGE-VALUE":
-      state.profilePage.newMessageText = action.body;
+      state.dialogsPage.newMessageText = action.body;
       return state;
     default:
       return state;
