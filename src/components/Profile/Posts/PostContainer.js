@@ -3,15 +3,15 @@ import { AddPostActionCreater, NewPostValueActionCreator } from "../../../redux/
 import Posts from "./Posts";
 
 const PostsContainer = (props) => {
+  let state = props.store.getState();
   let AddPost = () => {
-    props.dispatch(AddPostActionCreater());
+    props.store.dispatch(AddPostActionCreater());
   };
 
   let newPostValue = (text) => {
-    props.dispatch(NewPostValueActionCreator(text));
+    props.store.dispatch(NewPostValueActionCreator(text));
   };
-
-  return <Posts state={props.state} onchanged={AddPost} newPostText={newPostValue} posts={props.posts} />;
+  return <Posts onchanged={AddPost} newPostText={newPostValue} profilePage={state.posts.profilePage} />;
 };
 
 export default PostsContainer;

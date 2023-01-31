@@ -13,17 +13,14 @@ const postReducer = (state = initialState, action) => {
     case "NEW-POST":
       let newPost = {
         id: 3,
-        message: state.newPostText,
+        message: state.profilePage.newPostText,
         like: 0,
       };
       state.profilePage.newPostText = "";
       state.profilePage.posts.push(newPost);
-      console.log(state.profilePage.posts);
-
       return state;
     case "UPDATE-POST-TEXT":
       state.profilePage.newPostText = action.newText;
-
       return state;
     default:
       return state;

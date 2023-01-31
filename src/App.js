@@ -22,14 +22,8 @@ function App(props) {
             </div>
             <div className="col-9">
               <Routes>
-<<<<<<< HEAD
-                <Route path="/profile" element={<Profile profilePage={props.state.profilePage} dispatch={props.dispatch} />} />
-                <Route path="/dialogs/*" element={<Dialogs messages={props.state.dialogsPage.messages} dialogs={props.state.dialogsPage.dialogs} />} />
-=======
-                <Route path="/profile" element={<Profile state={props.state} profilePage={props.state.posts.profilePage} dispatch={props.dispatch} />} />
-                {/* <Route path="/dialogs/*" element={<Dialogs messages={props.state.messages.dialogsPage.messages} dialogs={props.state.messages.dialogsPage.dialogs} dialogsPage={props.state.messages.dialogsPage} dispatch={props.dispatch} />} /> */}
-                <Route path="/dialogs/*" element={<DialogsContainer state={props.state} dispatch={props.dispatch} />} />
->>>>>>> bfbbd7e799d9bfde6f34eb73da2500f287546437
+                <Route path="/profile" element={<Profile store={props.store} />} />
+                <Route path="/dialogs/*" element={<DialogsContainer store={props.store} />} />
                 <Route path="/news" element={<News />} />
                 <Route path="/music" element={<Music />} />
                 <Route path="/settings" element={<Settings />} />
