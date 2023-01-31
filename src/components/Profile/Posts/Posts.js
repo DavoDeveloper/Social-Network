@@ -4,16 +4,17 @@ import s from "./Posts.module.css";
 
 const Posts = (props) => {
   let newPosts = props.posts.map((p) => <Post message={p.message} like={p.like} />);
-
-  let newPost = React.createRef();
+  // let newPost = React.createRef();
+  let inputValue = props.state.posts.profilePage.newPostText;
 
   let AddPost = () => {
-    props.dispatch({ type: "NEW-POST" });
+    props.onchanged();
+    // newPost.current.value = "";
   };
 
-  let newPostValue = () => {
-    let text = newPost.current.value;
-    props.dispatch({ type: "UPDATE-POST-TEXT", newText: text });
+  let newPostValue = (e) => {
+    let text = e.target.value;
+    props.newPostText(text);
   };
 
   return (
@@ -23,7 +24,7 @@ const Posts = (props) => {
       </div>
       <h3>New Post</h3>
       <div className={s.add_post}>
-        <textarea ref={newPost} class="form-control" id="exampleFormControlTextarea1" onChange={newPostValue}></textarea>
+        <textarea value={inputValue} onChange={newPostValue} class="form-control" id="exampleFormControlTextarea1"></textarea>
         <button onClick={AddPost} className="btn btn-outline-dark">
           Add new Post
         </button>
