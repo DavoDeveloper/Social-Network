@@ -9,7 +9,7 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settinngs/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
-function App(props) {
+function App() {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -22,8 +22,8 @@ function App(props) {
             </div>
             <div className="col-9">
               <Routes>
-                <Route path="/profile" element={<Profile store={props.store} />} />
-                <Route path="/dialogs/*" element={<DialogsContainer store={props.store} />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/dialogs/*" element={<DialogsContainer />} />
                 <Route path="/news" element={<News />} />
                 <Route path="/music" element={<Music />} />
                 <Route path="/settings" element={<Settings />} />
