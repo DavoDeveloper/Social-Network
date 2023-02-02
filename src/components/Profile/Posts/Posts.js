@@ -3,8 +3,9 @@ import Post from "./Post";
 import s from "./Posts.module.css";
 
 const Posts = (props) => {
-  let newPosts = props.profilePage.posts.map((p) => <Post message={p.message} like={p.like} />);
-  let inputValue = props.profilePage.newPostText;
+  console.log(props);
+  let newPosts = props.posts.map((p) => <Post message={p.message} like={p.like} />);
+  let inputValue = props.newText;
 
   let AddPost = () => {
     props.onchanged();
