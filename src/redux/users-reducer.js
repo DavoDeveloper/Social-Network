@@ -10,7 +10,7 @@ let initialState = {
   currentPage: 1,
   pageSize: 6,
   totalUsersCount: 0,
-  isFetching: true,
+  isFetching: false,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -53,7 +53,7 @@ const usersReducer = (state = initialState, action) => {
     case FETCHING_LOADER:
       return {
         ...state,
-        isFetching: action.fetch,
+        isFetching: action.isFetching,
       };
 
     default:
@@ -61,11 +61,11 @@ const usersReducer = (state = initialState, action) => {
   }
 };
 
-export const FollowAC = (userId) => ({ type: FOLLOW, userId });
-export const UnfollowAC = (userId) => ({ type: UNFOLLOW, userId });
-export const SetUsersAC = (users) => ({ type: SET_USERS, users });
-export const SetCurrentPageAC = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
-export const SetTotalUsersCountAC = (count) => ({ type: SET_TOTAL_USERS_COUNT, count });
-export const FetchingLoaderAC = (isFetching) => ({ type: FETCHING_LOADER, isFetching });
+export const follow = (userId) => ({ type: FOLLOW, userId });
+export const unfollow = (userId) => ({ type: UNFOLLOW, userId });
+export const SetUsers = (users) => ({ type: SET_USERS, users });
+export const SetCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
+export const SetTotalUsersCount = (count) => ({ type: SET_TOTAL_USERS_COUNT, count });
+export const FetchingLoader = (isFetching) => ({ type: FETCHING_LOADER, isFetching });
 
 export default usersReducer;

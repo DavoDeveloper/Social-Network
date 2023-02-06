@@ -4,7 +4,7 @@ import postReducer from "./post-reducer";
 import sidebarReducer from "./sidebar-reducer";
 import usersReducer from "./users-reducer";
 
-let reducers = combineReducers({ profile: postReducer, dialogsPage: messageReducer, usersPage: usersReducer, sidebar: sidebarReducer });
+let reducers = combineReducers({ profilePage: postReducer, dialogsPage: messageReducer, usersPage: usersReducer, sidebar: sidebarReducer });
 let store = createStore(reducers);
 
 export default store;

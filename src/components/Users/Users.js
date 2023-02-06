@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import Loader from "../../common/Loader/Loader";
 import s from "./Users.module.css";
 
 let Users = (props) => {
@@ -11,29 +13,30 @@ let Users = (props) => {
   const styles = (src) => ({
     backgroundImage: `url('${src.avatar}')`,
   });
-
   return (
     <>
-      {props.isFetching ? <div className={s["lds-dual-ring"]}></div> : null}
+      <div className={s.pagination}>
+        {pages.map((p) => {
+          return (
+            <span
+              className={props.currentPage === p && s.active}
+              onClick={(e) => {
+                props.onPageChanged(p);
+              }}
+            >
+              {p}
+            </span>
+          );
+        })}
+      </div>
+      {props.isFetching ? <Loader /> : null}
       <div>
-        <div className={s.pagination}>
-          {pages.map((p) => {
-            return (
-              <span
-                className={props.currentPage === p && s.active}
-                onClick={(e) => {
-                  props.onPageChanged(p);
-                }}
-              >
-                {p}
-              </span>
-            );
-          })}
-        </div>
         {props.users.map((items) => (
           <div className={s.userBlock}>
             <div className={s.userImg}>
-              <div style={styles(items)}></div>
+              <NavLink to={"/profile/" + items.id}>
+                <div style={styles(items)}></div>
+              </NavLink>
               {items.followed ? (
                 <button onClick={() => props.unfollow(items.id)} className="btn btn-dark mt-3 mb-3">
                   Unfollow

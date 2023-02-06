@@ -8,8 +8,10 @@
   display: flex;
   color: #003b46;
 }
-.info img {
+.avatar {
   width: 100px;
   height: 100px;
   margin-right: 10px;
+  background-position: center;
+  background-size: cover;
 }
