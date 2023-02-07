@@ -2,7 +2,6 @@ import Loader from "../../common/Loader/Loader";
 import s from "./Profile.module.css";
 
 let ProfileInfo = (props) => {
-  console.log(props);
   if (!props.profile) {
     return <Loader />;
   }
