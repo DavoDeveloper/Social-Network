@@ -8,8 +8,8 @@ const FETCHING_LOADER = "FETCHING_LOADER";
 let initialState = {
   users: [],
   currentPage: 1,
-  pageSize: 6,
-  totalUsersCount: 0,
+  pageSize: 100,
+  totalUsersCount: 1000,
   isFetching: false,
 };
 

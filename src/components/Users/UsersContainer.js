@@ -7,19 +7,19 @@ import { follow, SetUsers, unfollow, SetCurrentPage, SetTotalUsersCount, Fetchin
 class UsersComponent extends React.Component {
   componentDidMount() {
     this.props.FetchingLoader(true);
-    axios.get(`https://reqres.in/api/users?page=${this.props.currentPage}&per_page=${this.props.pageSize}`).then((response) => {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then((response) => {
       this.props.FetchingLoader(false);
-      this.props.SetUsers(response.data.data);
-      this.props.SetTotalUsersCount(response.data.total);
+      this.props.SetUsers(response.data.items);
+      this.props.SetTotalUsersCount(response.data.totalCount);
     });
   }
 
   onPageChanged = (pageNumber) => {
     this.props.FetchingLoader(true);
     this.props.SetCurrentPage(pageNumber);
-    axios.get(`https://reqres.in/api/users?page=${pageNumber}&per_page=${this.props.pageSize}`).then((response) => {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then((response) => {
       this.props.FetchingLoader(false);
-      this.props.SetUsers(response.data.data);
+      this.props.SetUsers(response.data.items);
     });
   };
 
