@@ -3,7 +3,6 @@ import s from "./Profile.module.css";
 import avatar from "../../img/avatar.png";
 
 let ProfileInfo = (props) => {
-  console.log(props);
   if (!props.profile) {
     return <Loader />;
   }

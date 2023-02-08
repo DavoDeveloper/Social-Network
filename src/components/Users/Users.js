@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import Loader from "../../common/Loader/Loader";
 import s from "./Users.module.css";
 import avatar from "../../img/avatar.png";
+import { APIController } from "../../api/api";
 
 let Users = (props) => {
   // let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -42,12 +43,11 @@ let Users = (props) => {
               {items.followed ? (
                 <button
                   onClick={() => {
-                    props.unfollow(items.id);
-                    // axios.delete(`https://social-network.samuraijs.com/api/1.0/${items.userId}`, { withCredentials: true }).then((response) => {
-                    //   if (response.data.resultCode === 0) {
-                    //     props.unfollow(items.userId);
-                    //   }
-                    // });
+                    APIController.UnFollowUser(items.id).then((data) => {
+                      if (data.resultCode === 0) {
+                        props.unfollow(items.id);
+                      }
+                    });
                   }}
                   className="btn btn-dark mt-3 mb-3"
                 >
@@ -56,12 +56,11 @@ let Users = (props) => {
               ) : (
                 <button
                   onClick={() => {
-                    props.follow(items.id);
-                    // axios.post(`https://social-network.samuraijs.com/api/1.0/${items.userId}`, { "API-KEY": "924e90c1-095c-40ed-981d-3a1909f95ef3" }, { withCredentials: true }).then((response) => {
-                    //   if (response.data.resultCode === 0) {
-                    //     props.follow(items.userId);
-                    //   }
-                    // });
+                    APIController.FollowUser(items.id).then((data) => {
+                      if (data.resultCode === 0) {
+                        props.follow(items.id);
+                      }
+                    });
                   }}
                   className="btn btn-info mt-3 mb-3"
                 >
