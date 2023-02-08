@@ -11,8 +11,8 @@ class ProfileComponent extends React.Component {
     if (!profileId) {
       profileId = 27834;
     }
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users/` + profileId).then((response) => {
-      this.props.AddProfile(response.data.items);
+    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + profileId).then((response) => {
+      this.props.AddProfile(response.data);
     });
   }
 
@@ -21,7 +21,6 @@ class ProfileComponent extends React.Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     profile: state.profilePage.profile,
   };
