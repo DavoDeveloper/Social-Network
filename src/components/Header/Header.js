@@ -4,7 +4,6 @@ import "./Header.module.css";
 import { NavLink } from "react-router-dom";
 
 const Header = (props) => {
-  console.log(props);
   return (
     <div className="container mb-3">
       <nav className="navbar navbar-light bg-light p-0">

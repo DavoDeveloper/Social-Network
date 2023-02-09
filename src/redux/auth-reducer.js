@@ -1,3 +1,5 @@
+import { APIController } from "../api/api";
+
 const SET_USERS_DATA = "SET_USERS_DATA";
 
 let initialState = {
@@ -21,5 +23,16 @@ const authReducer = (state = initialState, action) => {
 };
 
 export const setUsersData = (data) => ({ type: SET_USERS_DATA, data });
+
+export const checkisAuth = (isAuth) => {
+  return (dispatch) => {
+    APIController.AuthUsers().then((data) => {
+      if (data.resultCode === 0) {
+        dispatch(setUsersData(data.data));
+        dispatch((isAuth = true));
+      }
+    });
+  };
+};
 
 export default authReducer;

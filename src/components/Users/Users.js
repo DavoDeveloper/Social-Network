@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 import Loader from "../../common/Loader/Loader";
 import s from "./Users.module.css";
 import avatar from "../../img/avatar.png";
-import { APIController } from "../../api/api";
 
 let Users = (props) => {
+  console.log(props);
   // let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
   let pagesCount = 10;
   let pages = [];
@@ -42,12 +42,9 @@ let Users = (props) => {
               </NavLink>
               {items.followed ? (
                 <button
+                  disabled={props.folowingProgress.some((id) => id === items.id)}
                   onClick={() => {
-                    APIController.UnFollowUser(items.id).then((data) => {
-                      if (data.resultCode === 0) {
-                        props.unfollow(items.id);
-                      }
-                    });
+                    props.unfollowSuccess(items.id);
                   }}
                   className="btn btn-dark mt-3 mb-3"
                 >
@@ -55,12 +52,9 @@ let Users = (props) => {
                 </button>
               ) : (
                 <button
+                  disabled={props.folowingProgress.some((id) => id === items.id)}
                   onClick={() => {
-                    APIController.FollowUser(items.id).then((data) => {
-                      if (data.resultCode === 0) {
-                        props.follow(items.id);
-                      }
-                    });
+                    props.followSuccess(items.id);
                   }}
                   className="btn btn-info mt-3 mb-3"
                 >

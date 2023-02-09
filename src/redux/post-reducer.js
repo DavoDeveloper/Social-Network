@@ -1,3 +1,5 @@
+import { APIController } from "../api/api";
+
 const NEW_POST = "NEW_POST";
 const UPDATE_POST_TEXT = "UPDATE_POST_TEXT";
 const ADD_PROFILE = "ADD_PROFILE";
@@ -38,5 +40,13 @@ const postReducer = (state = initialState, action) => {
 export const AddPostActionCreater = () => ({ type: NEW_POST });
 export const NewPostValueActionCreator = (text) => ({ type: UPDATE_POST_TEXT, newText: text });
 export const AddProfile = (profile) => ({ type: ADD_PROFILE, profile });
+
+export const getProfile = (profileId) => {
+  return (dispatch) => {
+    APIController.GetProfile(profileId).then((data) => {
+      dispatch(AddProfile(data));
+    });
+  };
+};
 
 export default postReducer;
