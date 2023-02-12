@@ -2,9 +2,9 @@ import React from "react";
 import DialogItem from "./Dialog";
 import Message from "./Message";
 import s from "./Dialogs.module.css";
+// import { Navigate } from "react-router-dom";
 
 const Dialogs = (props) => {
-  console.log(props);
   let dialogsElements = props.dialogs.map((d) => <DialogItem name={d.name} id={d.id} />);
   let messageElements = props.messages.map((m) => <Message message={m.message} />);
   let messageValue = props.messageText;
@@ -17,7 +17,9 @@ const Dialogs = (props) => {
     let body = e.target.value;
     props.changeValue(body);
   };
-
+  // if (!props.isAuth) {
+  //   return <Navigate to={"/login/*"} />;
+  // }
   return (
     <div className="container">
       <div className="row">
@@ -25,7 +27,13 @@ const Dialogs = (props) => {
         <div className="col-10">
           {messageElements}
           <div className={s.send}>
-            <textarea class="form-control" value={messageValue} onChange={messageChangeValue} id="exampleFormControlTextarea1" placeholder="Enter message..."></textarea>
+            <textarea
+              class="form-control"
+              value={messageValue}
+              onChange={messageChangeValue}
+              id="exampleFormControlTextarea1"
+              placeholder="Enter message..."
+            ></textarea>
             <button onClick={MessageSendOnclick} className="btn btn-outline-dark">
               Send
             </button>
