@@ -1,6 +1,7 @@
 import Loader from "../../common/Loader/Loader";
 import s from "./Profile.module.css";
 import avatar from "../../img/avatar.png";
+import Status from "./Status";
 
 let ProfileInfo = (props) => {
   if (!props.profile) {
@@ -9,9 +10,16 @@ let ProfileInfo = (props) => {
   let logo = props.profile.photos.small;
   return (
     <div>
-      <img src="https://i.pinimg.com/originals/bd/27/a6/bd27a624efead1f76cf41c0256572c55.jpg" alt="" />
+      {/* <img
+        src="https://i.pinimg.com/originals/bd/27/a6/bd27a624efead1f76cf41c0256572c55.jpg"
+        alt=""
+      /> */}
       <div className={s.info}>
-        {logo ? <div className={s.avatar} style={{ backgroundImage: `url("${logo}")` }}></div> : <div className={s.avatar} style={{ backgroundImage: `url("${avatar}")` }}></div>}
+        {logo ? (
+          <div className={s.avatar} style={{ backgroundImage: `url("${logo}")` }}></div>
+        ) : (
+          <div className={s.avatar} style={{ backgroundImage: `url("${avatar}")` }}></div>
+        )}
 
         <div>
           <h3>{props.profile.fullName}</h3>
@@ -19,6 +27,7 @@ let ProfileInfo = (props) => {
           <div>City:Minsk</div>
           <div>Education:BSU</div>
           <div>Email:{props.profile.email}</div>
+          <Status status={props.status} updateStatus={props.updateStatus} />
         </div>
       </div>
     </div>

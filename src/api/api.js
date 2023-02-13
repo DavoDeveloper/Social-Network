@@ -30,7 +30,24 @@ export const APIController = {
     });
   },
   GetProfile(profileId) {
+    console.warn("Outdated mehod,please Use ProfileApiController object");
+    return ProfileAPIController.GetProfile(profileId);
+  },
+};
+
+export const ProfileAPIController = {
+  GetProfile(profileId) {
     return instance.get(`profile/` + profileId).then((response) => {
+      return response.data;
+    });
+  },
+  GetStatus(profileId) {
+    return instance.get(`profile/status/` + profileId).then((response) => {
+      return response.data;
+    });
+  },
+  UpdateStatus(status) {
+    return instance.put(`profile/status/`, { status }).then((response) => {
       return response.data;
     });
   },
