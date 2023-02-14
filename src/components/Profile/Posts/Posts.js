@@ -1,19 +1,32 @@
 import React from "react";
 import Post from "./Post";
 import s from "./Posts.module.css";
+import { Field, reduxForm } from "redux-form";
+
+const AddPostForm = (props) => {
+  return (
+    <form onSubmit={props.handleSubmit}>
+      <Field
+        name={"postBody"}
+        component={"textarea"}
+        value={props.inputValue}
+        class="form-control"
+        id="exampleFormControlTextarea1"
+      ></Field>
+      <button className="btn btn-outline-dark">Add new Post</button>
+    </form>
+  );
+};
+
+const ReduxPostForm = reduxForm({ form: "post" })(AddPostForm);
 
 const Posts = (props) => {
   let newPosts = props.posts.map((p) => <Post message={p.message} like={p.like} />);
-  let inputValue = props.newText;
 
-  let AddPost = () => {
-    props.onchanged();
+  let addPost = (values) => {
+    props.onchanged(values.postBody);
   };
 
-  let newPostValue = (e) => {
-    let text = e.target.value;
-    props.newPostText(text);
-  };
   return (
     <div>
       <div>
@@ -21,10 +34,7 @@ const Posts = (props) => {
       </div>
       <h3>New Post</h3>
       <div className={s.add_post}>
-        <textarea value={inputValue} onChange={newPostValue} class="form-control" id="exampleFormControlTextarea1"></textarea>
-        <button onClick={AddPost} className="btn btn-outline-dark">
-          Add new Post
-        </button>
+        <ReduxPostForm onSubmit={addPost} />
       </div>
       {newPosts}
     </div>

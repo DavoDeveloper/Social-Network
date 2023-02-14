@@ -12,8 +12,9 @@
 .add_post button {
   width: 130px;
   margin-top: 5px;
+  margin-bottom: 15px;
 }
 
-.add_post textarea {
+.add_post form {
   width: 100%;
 }

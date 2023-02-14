@@ -1,7 +1,6 @@
 import { APIController, ProfileAPIController } from "../api/api";
 
 const NEW_POST = "NEW_POST";
-const UPDATE_POST_TEXT = "UPDATE_POST_TEXT";
 const ADD_PROFILE = "ADD_PROFILE";
 const GET_STATUS = "GET_STATUS";
 
@@ -10,7 +9,6 @@ let initialState = {
     { id: 1, message: "Hi!,how are you", like: 50 },
     { id: 2, message: "Its my first post", like: 35 },
   ],
-  newPostText: "",
   profile: null,
   status: "",
 };
@@ -20,15 +18,9 @@ const postReducer = (state = initialState, action) => {
     case NEW_POST:
       return {
         ...state,
-        posts: [...state.posts, { id: 3, message: state.newPostText, like: 0 }],
-        newPostText: "",
+        posts: [...state.posts, { id: 3, message: action.newPostBody, like: 0 }],
       };
 
-    case UPDATE_POST_TEXT:
-      return {
-        ...state,
-        newPostText: action.newText,
-      };
     case ADD_PROFILE:
       return {
         ...state,
@@ -44,8 +36,7 @@ const postReducer = (state = initialState, action) => {
   }
 };
 
-export const AddPostActionCreater = () => ({ type: NEW_POST });
-export const NewPostValueActionCreator = (text) => ({ type: UPDATE_POST_TEXT, newText: text });
+export const AddPostActionCreater = (newPostBody) => ({ type: NEW_POST, newPostBody });
 export const AddProfile = (profile) => ({ type: ADD_PROFILE, profile });
 export const AddStatus = (status) => ({ type: GET_STATUS, status });
 
