@@ -14,11 +14,7 @@ export const APIController = {
       return response.data;
     });
   },
-  AuthUsers() {
-    return instance.get(`auth/me`).then((response) => {
-      return response.data;
-    });
-  },
+
   FollowUser(id) {
     return instance.post(`follow/${id}`).then((response) => {
       return response.data;
@@ -48,6 +44,24 @@ export const ProfileAPIController = {
   },
   UpdateStatus(status) {
     return instance.put(`profile/status/`, { status }).then((response) => {
+      return response.data;
+    });
+  },
+};
+
+export const AuthAPIController = {
+  AuthUsers() {
+    return instance.get(`auth/me`).then((response) => {
+      return response.data;
+    });
+  },
+  Login(email, password, rememberMe = false) {
+    return instance.post("auth/login", { email, password, rememberMe }).then((response) => {
+      return response.data;
+    });
+  },
+  Logout() {
+    return instance.delete("auth/login").then((response) => {
       return response.data;
     });
   },
