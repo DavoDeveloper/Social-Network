@@ -1,7 +1,8 @@
 import Loader from "../../common/Loader/Loader";
 import s from "./Profile.module.css";
 import avatar from "../../img/avatar.png";
-import Status from "./Status";
+// import Status from "./Status";
+import StatusWithHooks from "./StatusWithHooks";
 
 let ProfileInfo = (props) => {
   if (!props.profile) {
@@ -27,7 +28,7 @@ let ProfileInfo = (props) => {
           <div>City:Minsk</div>
           <div>Education:BSU</div>
           <div>Email:{props.profile.email}</div>
-          <Status status={props.status} updateStatus={props.updateStatus} />
+          <StatusWithHooks status={props.status} updateStatus={props.updateStatus} />
         </div>
       </div>
     </div>
