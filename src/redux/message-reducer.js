@@ -21,7 +21,6 @@ const messageReducer = (state = initialState, action) => {
         ...state,
         messages: [...state.messages, { message: action.newMessageBody, id: 4 }],
       };
-
     default:
       return state;
   }

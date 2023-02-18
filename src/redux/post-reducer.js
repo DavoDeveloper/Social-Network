@@ -40,27 +40,21 @@ export const AddPostActionCreater = (newPostBody) => ({ type: NEW_POST, newPostB
 export const AddProfile = (profile) => ({ type: ADD_PROFILE, profile });
 export const AddStatus = (status) => ({ type: GET_STATUS, status });
 
-export const getProfile = (profileId) => {
-  return (dispatch) => {
-    APIController.GetProfile(profileId).then((data) => {
-      dispatch(AddProfile(data));
-    });
-  };
+export const getProfile = (profileId) => async (dispatch) => {
+  let data = await APIController.GetProfile(profileId);
+  dispatch(AddProfile(data));
 };
 
-export const getStatus = (profileId) => {
-  return (dispatch) => {
-    ProfileAPIController.GetStatus(profileId).then((data) => {
-      dispatch(AddStatus(data));
-    });
-  };
+export const getStatus = (profileId) => async (dispatch) => {
+  let data = await ProfileAPIController.GetStatus(profileId);
+  dispatch(AddStatus(data));
 };
-export const updateStatus = (status) => (dispatch) => {
-  ProfileAPIController.UpdateStatus(status).then((data) => {
-    if (data.resultCode === 0) {
-      dispatch(AddStatus(status));
-    }
-  });
+
+export const updateStatus = (status) => async (dispatch) => {
+  let data = await ProfileAPIController.UpdateStatus(status);
+  if (data.resultCode === 0) {
+    dispatch(AddStatus(status));
+  }
 };
 
 export default postReducer;

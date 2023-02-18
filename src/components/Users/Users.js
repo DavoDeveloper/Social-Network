@@ -3,42 +3,24 @@ import { NavLink } from "react-router-dom";
 import Loader from "../../common/Loader/Loader";
 import s from "./Users.module.css";
 import avatar from "../../img/avatar.png";
+import Pagination from "../../common/Pagination/Pagination";
 
 let Users = (props) => {
-  console.log(props);
-  // let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-  let pagesCount = 10;
-  let pages = [];
-  for (let i = 1; i <= pagesCount; i++) {
-    pages.push(i);
-  }
-
-  const styles = (src) => ({
-    backgroundImage: `url('${src.photos.small ? src.photos.small : avatar}')`,
-  });
   return (
     <>
-      <div className={s.pagination}>
-        {pages.map((p) => {
-          return (
-            <span
-              className={props.currentPage === p && s.active}
-              onClick={(e) => {
-                props.onPageChanged(p);
-              }}
-            >
-              {p}
-            </span>
-          );
-        })}
-      </div>
+      {<Pagination currentPage={props.currentPage} onPageChanged={props.onPageChanged} />}
+
       {props.isFetching ? <Loader /> : null}
       <div>
         {props.users.map((items) => (
           <div className={s.userBlock}>
             <div className={s.userImg}>
               <NavLink to={"/profile/" + items.id}>
-                <div style={styles(items)}></div>
+                <div
+                  style={{
+                    backgroundImage: `url('${items.photos.small ? items.photos.small : avatar}')`,
+                  }}
+                ></div>
               </NavLink>
               {items.followed ? (
                 <button

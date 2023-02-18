@@ -24,6 +24,7 @@ const StatusWithHooks = (props) => {
       </div>
       {editMode && (
         <input
+          className="form-control"
           type="text"
           autoFocus={true}
           onBlur={deactivateEditMode}

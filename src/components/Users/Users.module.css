@@ -55,15 +55,3 @@
 .email {
   width: 200px;
 }
-
-.pagination {
-  display: flex;
-  justify-content: center;
-}
-.pagination span {
-  cursor: pointer;
-  margin: 3px;
-}
-.active {
-  font-weight: bold;
-}

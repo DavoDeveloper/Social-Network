@@ -51,17 +51,6 @@ class UsersComponent extends React.Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     users: state.usersPage.users,
-
-//     pageSize: state.usersPage.pageSize,
-//     totalUsersCount: state.usersPage.totalUsersCount,
-//     currentPage: state.usersPage.currentPage,
-//     isFetching: state.usersPage.isFetching,
-//     folowingProgress: state.usersPage.folowingProgress,
-//   };
-// };
 const mapStateToProps = (state) => {
   return {
     users: getUsersFromState(state),

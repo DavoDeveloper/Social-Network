@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { Field, reduxForm } from "redux-form";
-import { Input } from "../../common/Utiles/Validate/FormControls";
+import { reduxForm } from "redux-form";
+import FieldCreator, { Input } from "../../common/Utiles/Validate/FormControls";
 import { required } from "../../common/Utiles/Validate/validators";
 import { login } from "../../redux/auth-reducer";
 import s from "./Login.module.css";
@@ -11,29 +11,12 @@ const LoginForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
       <div className="mb-2">
-        <Field
-          component={Input}
-          validate={[required]}
-          name={"email"}
-          type="text"
-          placeholder={"login..."}
-          className="form-control"
-        />
+        {FieldCreator(Input, required, "email", "text", "login...", "form-control")}
+        {FieldCreator(Input, required, "password", "password", "password...", "form-control mt-3")}
+        {FieldCreator(Input, [], "rememberMe", "checkbox", null, null)}
+        <label>remeber me</label>
       </div>
-      <div>
-        <Field
-          component={Input}
-          validate={[required]}
-          name={"password"}
-          type="password"
-          placeholder={"password..."}
-          className="form-control"
-        />
-      </div>
-      <div>
-        <Field component={"input"} name={"rememberMe"} type="checkbox" />
-        <label htmlFor="">remeber me</label>
-      </div>
+
       {props.error && <div className={s.summaryError}>{props.error}</div>}
       <button className="btn btn-info">Login</button>
     </form>
